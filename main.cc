@@ -35,9 +35,14 @@ int main()
 		int s1 = t->tm_sec / 10;
 		int s2 = t->tm_sec % 10;
 
+		static std::string lastDigits;
+
 		constexpr const char* clearScreen = "\033[2J";
 		std::string digits = combineDigits({ h1, h2, COLON_POS, m1, m2, COLON_POS, s1, s2 });
-		std::cout << clearScreen << digits << std::endl;
+		if (lastDigits != digits)
+			std::cout << clearScreen << digits << std::endl;
+
+		lastDigits = digits;
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
