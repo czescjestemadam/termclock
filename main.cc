@@ -36,7 +36,8 @@ int main()
 		int s2 = t->tm_sec % 10;
 
 		constexpr const char* clearScreen = "\033[2J";
-		std::cout << clearScreen << combineDigits({ h1, h2, COLON_POS, m1, m2, COLON_POS, s1, s2 });
+		std::cout << clearScreen << std::endl
+				  << combineDigits({ h1, h2, COLON_POS, m1, m2, COLON_POS, s1, s2 }) << std::endl;
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
